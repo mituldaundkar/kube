@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-my-app
+  labels:
+    env: dev
+    app: cbz-app
+spec:
+  containers:
+    - name: my-my-container
+      image: httpd
+      ports:
+        - containerPort: 80
