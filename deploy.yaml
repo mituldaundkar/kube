@@ -18,7 +18,7 @@ spec:
   replicas: 3
   selector:
     matchExpressions:
-      - {key: app, operator: In, values: [cbz-app]}
+      - {key: app, operator: In, values: [demo-app]}
   strategy:
     type: RollingUpdate
 ---
