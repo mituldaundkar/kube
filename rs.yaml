@@ -9,6 +9,7 @@ spec:
     metadata:
       labels:
         app: cbz-app
+    spec:
       containers:
        - name: my-container
          image: nginx
