@@ -15,7 +15,8 @@ spec:
          ports:
           - containerPort: 80
   replicas: 3
-  matchExpression:
+  selector:
+    matchExpressions:
       - {key: app, operator: In, values: [cbz-app]}
 
 ---
