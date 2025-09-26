@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  namespace: default
+  name: my-sts
+  labels:
+    app: my-sts-app
+spec:
+  template:
+    metadata:
+      labels:
+        app: my-sts-app
+    spec:
+      containers:
+        - name: my-container
+          image: mysql:latest
+          ports:
+            - containerPort: 3306
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: "redhat"
+  selector:
+    matchLabels:
+      app: my-sts-app
+  replicas: 3
