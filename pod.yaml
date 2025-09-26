@@ -1,13 +1,30 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: my-my-app
+  name: my-app
   labels:
     env: dev
     app: cbz-app
 spec:
   containers:
-    - name: my-my-container
-      image: httpd
+    - name: my-container
+      image: mysql:latest
       ports:
-        - containerPort: 80
+        - containerPort: 3306
+      env:
+        - name: "MYSQL_ROOT_PASSWORD"
+          valueFrom:
+            configMapKeyRef:
+              name: my-cred
+              key: PASSWORD
+        - name: "USERNAME"
+          valueFrom:
+            configMapKeyRef:
+              name: my-cred
+              key: USERNAME
+        - name: "MY_CITY"
+          valueFrom:
+            configMapKeyRef:
+              name: my-cred
+              key: CITY
+          
