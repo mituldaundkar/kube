@@ -27,4 +27,15 @@ spec:
             configMapKeyRef:
               name: my-cred
               key: CITY
+
+        - name: "USER"
+          valueFrom:
+            secretKeyRef:
+              name: my-secret
+              key: DBUSER
+        - name: "PASSWORD"
+          valueFrom:
+            secretKeyRef:
+              name: my-secret
+              key: DBPASSWORD
           
