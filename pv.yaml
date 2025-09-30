@@ -8,9 +8,14 @@ spec:
   capacity:
     storage: 5Gi
   volumeMode: Filesystem
-  accessMode: 
+  accessModes: 
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
   storageClassName: manual
   local:
     path: /mnt/data
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+          - {key: kubernetes.io/hostname, operator: In, values: ["controlplane"]}
