@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+  labels:
+    env: dev
+    app: cbz-app
+spec:
+  containers:
+    - name: my-nginx
+      image: nginx:latest
+      ports:
+        - containerPort: 80
+      resources:
+        requests:
+          cpu: 100m
+          memory: 200M
+        limits:
+          cpu: 200m
+          memory: 400M
