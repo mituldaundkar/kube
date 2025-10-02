@@ -1,8 +1,11 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: my-ingress    
+  name: my-ing
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /  
 spec:
+  ingressClassName: ingress-nginx # kubectl get ingressclasses
   rules:
   - http:
       paths:
@@ -20,6 +23,9 @@ spec:
               name: mobile-app-svc
               port:
                 number: 80    
+    host: ae133665dff864f489ac7a25a44d1933-1793400557.us-east-1.elb.amazonaws.com
 
+    # host found in "kubectl get svc -n ingress-nginx"
 
+#Install ingress-nginx on EKS :
 # kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.13.3/deploy/static/provider/cloud/deploy.yaml
